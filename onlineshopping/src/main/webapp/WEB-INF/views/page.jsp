@@ -23,11 +23,15 @@
 <title>Online Shopping - ${title }</title>
 <script>
 	window.menu = '${title}';
+	
+	window.contextRoot = '${contextRoot}';
 </script>
 
 <link rel="stylesheet" href="${css }/bootstrap.min.css">
-<link rel="stylesheet" href="${css }/myapp.css">
 <link rel="stylesheet" href="${css }/theme.css">
+<link rel="stylesheet" href="${css }/dataTables.bootstrap4.css">
+<link rel="stylesheet" href="${css }/myapp.css">
+
 
 
 </head>
@@ -61,6 +65,21 @@
 
 				<%@include file="contact.jsp"%>
 			</c:if>
+			
+			
+			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
+
+				<%@include file="listProducts.jsp"%>
+			</c:if>
+			
+			
+			<c:if test="${userClickShowProduct == true }">
+
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
+			
+			
+			
 			<!-- /.container -->
 		</div>
 
@@ -70,7 +89,10 @@
 
 		<script src="${js }/jq.js"></script>
 		<script src="${js }/bootstrap.min.js"></script>
+		<script src="${js }/jquery.dataTables.js"></script>
+		<script src="${js }/dataTables.bootstrap4.js"></script>
 		<script src="${js }/myscript.js"></script>
+		
 	</div>
 </body>
 
