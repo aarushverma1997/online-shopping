@@ -60,7 +60,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public Product get(int productId) {
 
-		return sessionFactory.getCurrentSession().get(Product.class, Integer.valueOf(productId));
+		return sessionFactory.getCurrentSession().get(Product.class, productId);
 
 	}
 
@@ -102,6 +102,24 @@ String selectActiveProductsByCategory = "FROM Product WHERE isActive=:active AND
 				.getResultList();
 	
 
+	}
+
+	@Override
+	public List<Product> getLatestProductList() {
+		
+		int maxResult=10;
+		String query = "FROM Product WHERE isActive=:isActive ORDER BY id DESC";
+		
+	return	sessionFactory.getCurrentSession().createQuery(query, Product.class).setParameter("isActive", true).setMaxResults(maxResult).getResultList();
+	}
+
+	@Override
+	public List<Product> getProductLesSprice() {
+		int maxResult=15;
+		String query = "FROM Product WHERE isActive=:isActive ORDER BY unitPrice ASC";
+		
+		return sessionFactory.getCurrentSession().createQuery(query, Product.class).setParameter("isActive", true).setMaxResults(maxResult).getResultList();
+		
 	}
 
 }

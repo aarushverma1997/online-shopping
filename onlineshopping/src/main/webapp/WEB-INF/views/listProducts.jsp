@@ -49,6 +49,11 @@ window.categoryId = '${category.id}';
 <div class="row">
 
 <div class="col-xl-12">
+
+<div class="container-fluid">
+
+<div class="table-responsive">
+
 <table id="productListTable" class="table table-striped table-bordered">
 
  <thead>
@@ -67,6 +72,12 @@ window.categoryId = '${category.id}';
         
         
 </table>
+
+</div>
+
+</div>
+
+
 
 </div>
 

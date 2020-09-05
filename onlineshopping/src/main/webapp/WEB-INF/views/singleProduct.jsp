@@ -1,3 +1,4 @@
+<%@include file="./shared/navbar.jsp" %>
 <div class="container">
 
 <div class="row">
@@ -18,7 +19,7 @@
 <div class="row">
 <div class="col-xs-12 col-sm-4">
 <div class="thumbnail">
-<img  src="${imgages }/${product.code}.jsp" class="img img-responsive"  />
+<img  src="${images }/${product.code}.jpg" class="img img-responsive"  />
 
 </div>
 
@@ -36,6 +37,7 @@
 
 <hr/>
 
+
 <c:choose>
 <c:when test="${product.quantity < 1 }" >
 
@@ -48,8 +50,7 @@
 </c:otherwise>
 </c:choose>
 
-
-
+<security:authorize access="hasAuthority('USER')">
 <c:choose>
 <c:when test="${product.quantity < 1 }" >
 
@@ -61,6 +62,16 @@
 
 </c:otherwise>
 </c:choose>
+</security:authorize>
+
+
+
+<security:authorize access="hasAuthority('ADMIN')">
+
+<a href="${contextRoot }/manage/${product.id}/product" class="btn btn-success">Edit</a>
+
+</security:authorize>
+
 
 
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+                          
+                          
+                   <var name="user" class="org.rv.shoppingbackend.dto.User"/>
+                   <var name="billing" class="org.rv.shoppingbackend.dto.Address"/>
+                  
+  
+		
+   <view-state id="shipping" view="flows/checkout/checkout-shipping">
+   <transition on="payment" to="payment"></transition>
+   
+   
+   </view-state>  
+           <view-state id="payment" view="flows/checkout/checkout-payment">
+   <transition on="receipt" to="receipt"></transition>
+   
+   
+   </view-state>  
+          
+		
+		
+	<!-- end state -->
+	<end-state id="home"
+		view="externalRedirect:contextRelative:/" />
+	
+	<end-state id="receipt" view="flows/checkout/checkout-receipt" />
+
+
+	<!-- Global transition -->
+	<global-transitions>
+
+		<transition on="home" to="home" validate="false"/>
+
+	</global-transitions>
+
+</flow>
